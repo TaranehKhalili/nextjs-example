@@ -1,10 +1,15 @@
+import AddUser from "./components/AddUser";
 import UserData from "./components/UserData";
+import { fetchData } from "./lib/api";
 
-export default function Home() {
+export default async function Home() {
+  // Server-side data fetching
+  const users = await fetchData();
+
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold text-center py-8">Hello World</h1>
-      <UserData />
+      <AddUser />
+      <UserData initialUsers={users} />
     </div>
   );
 }

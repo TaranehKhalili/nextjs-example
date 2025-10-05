@@ -15,11 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="pt-16">
+      <body className="pt-16 pb-20">
         <QueryProvider>
           <Header />
           <main>{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </QueryProvider>
       </body>
     </html>

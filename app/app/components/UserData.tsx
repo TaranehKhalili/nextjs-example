@@ -16,11 +16,15 @@ export type User = {
   };
 };
 
-export default function UserData() {
-  const { data: users, isLoading, error, isError } = useUsers();
+interface UserDataProps {
+  initialUsers: User[];
+}
 
-  // Component-level loading state
-  if (isLoading) {
+export default function UserData({ initialUsers }: UserDataProps) {
+  const { data: users, isLoading, error, isError } = useUsers(initialUsers);
+
+  // Component-level loading state (only show if no initial data)
+  if (isLoading && !initialUsers.length) {
     return (
       <div className="flex items-center justify-center p-8">
         <div className="animate-pulse">
